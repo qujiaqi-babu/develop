@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import "./App.css";
-import Posts from "./components/Posts";
+// import Posts from "./components/Posts";
 
 function App() {
   return (
@@ -8,9 +8,9 @@ function App() {
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <img src="/Babu.svg" className="App-logo" alt="logo" />
-        <h1>欢迎光临</h1>
+        <h1>欢迎光临，儿砸！</h1>
         <p>
-          Babu Edit <code>src/App.js</code> and save to reload.
+          巴布 Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -21,7 +21,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <Posts />
+      {/* <Posts /> */}
     </div>
   );
 }
