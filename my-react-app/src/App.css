@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.post {
+  margin-bottom: 4em;
+}
+
+.post h4 {
+  font-size: 2rem;
+  background-color: #61dafb;
+}
+
+h4 {
+  background-color: #66fb61;
+}

@@ -1,13 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import "./App.css";
+import Posts from "./components/Posts";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <img src="/Babu.svg" className="App-logo" alt="logo" />
+        <h1>欢迎光临</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Babu Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -18,6 +21,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Posts />
     </div>
   );
 }
