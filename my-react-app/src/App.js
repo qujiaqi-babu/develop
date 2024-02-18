@@ -11,14 +11,21 @@ function Counter() {
   function updateCount() {
     setCount(count + 1);
   }
-  return <button onClick={updateCount}>Count is: {count}</button>;
-}
-
-function Post(prob) {
   return (
     <>
-      <h4>{prob.key}</h4>
-      <p>{prob.post}</p>
+      <br />
+      <button onClick={updateCount}>Count is: {count}</button>
+      <br />
+    </>
+  );
+}
+
+function Post({ post }) {
+  // console.log(post);
+  return (
+    <>
+      <h4>{post.title}</h4>
+      <p>{post.body}</p>
     </>
   );
 }
@@ -30,14 +37,13 @@ function PostList() {
       .then((response) => response.json())
       .then((posts) => setPosts(posts));
   }, []);
+  // object with keys {userId, id, title, body}
   return posts.map((post) => <Post key={post.id} post={post} />);
 }
 
 function App() {
   return (
     <div className="App">
-      <Counter />
-      <PostList />
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <img src="/Babu.svg" className="App-logo" alt="logo" />
@@ -54,6 +60,8 @@ function App() {
           Learn React
         </a>
       </header>
+      <Counter />
+      <PostList />
       {/* <Posts /> */}
     </div>
   );
