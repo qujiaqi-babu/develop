@@ -4,9 +4,293 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>巴布的第一个标题</title>
+    <script>
+      // 宏任务与微任务的执行顺序
+      function question1() {
+        console.log("宏任务与微任务的执行顺序(ans: 1 3 4 6 5 2)");
+        console.log(1);
+        // 输出1
+        // setTimeout 在指定的毫秒数后调用函数或计算表达式，异步宏任务，放入宏任务队列中等待
+        setTimeout(function () {
+          console.log(2);
+        }, 0);
+        // new Promise 同步执行代码
+        new Promise((resolve) => {
+          console.log(3);
+          // 输出3
+          resolve();
+          // 执行then中的回调函数，异步微任务，放入微任务队列中等待
+          console.log(4);
+          // 输出4
+        }).then(() => {
+          console.log(5);
+        });
+        console.log(6);
+        // 输出6
+        // 至此，同步代码执行完毕
+        // 清空微任务队列，输出5
+        // 执行下一个宏任务setTimeout，输出2
+      }
+      // question1();
+
+      // 闭包 函数执行时this的指向
+      function question2() {
+        console.log(
+          "js执行机制 闭包 函数执行时this的指向(ans: 1 1 2 3 1 undefined)"
+        );
+
+        var name = 1;
+        function test() {
+          var name = 2;
+          console.log(this.name);
+          return function inner() {
+            console.log(name);
+          };
+        }
+        test(); // window调用test函数，test()中的this指向window，window.name=1，输出1
+        test()(); // test()执行同上，输出1，返回inner函数，inner()访问局部变量，输出2
+        var b = {
+          name: 3,
+        };
+        b.test = test; // 把test函数赋值给b.test(属性)
+        b.test(); // 对象b调用test函数，test()中的this指向对象b，b.name=3，输出3
+        var c = b.test; // 把test函数的引用赋值给变量c
+        c(); // c()执行同test()执行，输出1
+        new test(); // 把test当作构造函数new一个实例，执行函数体，test()中的this指向new的实例，但此时未给this赋值，访问不存在的属性name，输出undefined
+      }
+      // question2();
+
+      // 栈数据结构
+      function question3() {
+        console.log("实现栈数据结构 实现in、out、top、size函数");
+        class Stack {
+          // 构造器
+          constructor() {
+            this.items = [];
+          }
+          // 入栈（栈顶添加）
+          in(value) {
+            this.items.push(value);
+          }
+          // 出栈（删除栈顶元素）
+          out() {
+            if (this.size() == 0) return null;
+            return this.items.pop();
+          }
+          // 弹栈（查看栈顶元素，不删除）
+          top() {
+            if (this.size() == 0) return null;
+            return this.items[this.size() - 1];
+          }
+          // 栈的长度
+          size() {
+            return this.items.length;
+          }
+        }
+        const stack = new Stack();
+        stack.in("x");
+        stack.in("y");
+        stack.in("z");
+        console.log(stack.top()); // 输出'z'
+        console.log(stack.size()); // 输出'3'
+        console.log(stack.out()); // 输出'z'
+        console.log(stack.top()); // 输出'y'
+        console.log(stack.size()); // 输出'2'
+      }
+      // question3();
+
+      // 数组操作
+      function arrayTest() {
+        var a = [1, 2, 3];
+        console.log(a);
+        console.log(a.push(4)); // 4 更新后的数组长度
+        console.log(a);
+        a.pop();
+        console.log(a);
+        a.shift();
+        console.log(a);
+        console.log(a.unshift(5)); // 3 更新后的数组长度
+        console.log(a);
+      }
+      // arrayTest();
+
+      // 数组去重
+      function question4() {
+        console.log("数组去重 输入array=[1,5,2,3,2,5,4] 输出[1,5,2,3,4]");
+        function unique(array, method = "1") {
+          switch (method) {
+            // 数组本身去重
+            case "1":
+              for (let i = 0; i < array.length; i++) {
+                for (let j = i + 1; j < array.length; j++) {
+                  if (array[i] === array[j]) {
+                    array.splice(j, 1);
+                    j--;
+                  }
+                }
+              }
+            // 数组本身不变，只得到去重后的结果
+            case "2.1":
+              // 利用Set
+              // return [...new Set(array)];
+              return Array.from(new Set(array)); // [1, 5, 2, 3, 4]
+            case "2.2":
+              // 利用Array.reduce，首先为accu赋初值[]，若当前值cur不在accu中，则将当前值cur加入accu
+              return array.reduce((accu, cur) => {
+                if (!accu.includes(cur)) accu.push(cur);
+                return accu;
+              }, []);
+            case "2.3":
+              // 利用Array.reduce，视accu为对象，赋初值{}，最后把对象所有key的value以数组的形式返回
+              const result = array.reduce((accu, cur) => {
+                if (!accu[cur]) accu[cur] = cur;
+                return accu;
+              }, {});
+              return Object.values(result); // [1, 2, 3, 4, 5]
+          }
+        }
+
+        const array = [1, 5, 2, 3, 2, 5, 4];
+        const result = unique(array, "2.3");
+        console.log(array); // [1, 5, 2, 3, 2, 5, 4]
+        console.log(result);
+      }
+      // question4();
+
+      // 用Promise对fetchData进行包装
+      function question5() {
+        console.log(
+          "用Promise对fetchData进行包装 将回调的设计封装成then的形式"
+        );
+        function fetchData(callback) {
+          setTimeout(() => {
+            callback("我是返回的数据");
+          }, 2000);
+        }
+        function promiseFetch(data) {
+          // resolve即then中的函数（条件满足时被调用），reject即catch中的函数（条件不满足或resolve执行报错时被调用）
+          return new Promise((resolve, reject) => {
+            if (1 < 2) {
+              console.log("条件满足");
+              fetchData(resolve);
+            } else {
+              console.log("条件不满足");
+              fetchData(reject);
+            }
+          });
+        }
+        promiseFetch()
+          .then((data) => {
+            // console.log(qqq); // qqq未初始化
+            console.log(data);
+          })
+          .catch((data) => {
+            console.log("数据返回失败");
+          });
+      }
+      // question5();
+
+      // 实现函数getNameById
+      function question6() {
+        console.log("输入address和id 输出id对应的地址的name");
+        const address = [
+          {
+            id: 1,
+            name: "北京市",
+            children: [
+              {
+                id: 11,
+                name: "海淀区",
+                children: [
+                  {
+                    id: 111,
+                    name: "中关村",
+                  },
+                ],
+              },
+              {
+                id: 12,
+                name: "朝阳区",
+              },
+            ],
+          },
+          {
+            id: 2,
+            name: "天津市",
+          },
+        ];
+        // 树形结构结构转数组
+        function treeToList(tree) {
+          return tree.reduce((accu, cur) => {
+            accu.push(cur); //将当前节点加入accu
+            if (cur.children) {
+              const subList = treeToList(cur.children); // 若当前节点有孩子节点，则通过递归调用对孩子节点进行展平
+              accu.push(...subList); //将subList展开后加入accu
+            }
+            return accu;
+          }, []);
+        }
+        function getNameById(address, id) {
+          // 树形结构结构转数组
+          const list = treeToList(address);
+          // 对比数组 find函数查看list中的每个item，返回第一个满足item.id === id的item
+          const result = list.find((item) => item.id === id);
+          return result ? result.name : ""; // 若存在，返回其name，否则返回空串
+        }
+        const query = 32; // 2 => 天津市；32 => 查无此id
+        console.log("id:", query);
+        console.log(getNameById(address, query) || "查无此id");
+      }
+      // question6();
+
+      // map与forEach的区别，课程里说map的callback函数只会在有值的索引上被调用，但是实验下来forEach也是如此，二者的主要区别在于map可以生成并返回新数组，forEach主要用于遍历每一项
+      function arrayFunTest() {
+        var a = [0, 1];
+        a[4] = 4;
+        console.log("a", a);
+        console.log("map=>b");
+        var b = a.map((item) => {
+          console.log(item);
+          return item * item;
+        });
+        console.log("b", b);
+        console.log("forEach");
+        a.forEach((item) => {
+          console.log(item);
+        });
+      }
+      // arrayFunTest();
+
+      // 从代码实现、代码风格、代码规范（命名、缩进、注释、判断、循环语句）等角度给出对原始代码的意见
+      function question7() {
+        // 驼峰命名更好
+        let mergeTwoarr = (a1, a2) => {
+          // 改为forEach更好
+          a2.map((item) => {
+            a1.push(item); // 不建议对原数组进行修改
+          });
+          console.log("结果是", a1);
+          return a1;
+        };
+        var arr1 = [1, 2],
+          arr2 = [3, 4];
+        console.log("merge", arr1, arr2);
+        mergeTwoarr(arr1, arr2);
+
+        // 我的实现
+        const merge = (arr1, arr2) => [...arr1, ...arr2];
+        var arr1 = [1, 2],
+          arr2 = [3, 4];
+        console.log("merge", arr1, arr2);
+        console.log(merge(arr1, arr2));
+      }
+      // question7();
+    </script>
   </head>
   <body>
     <h1>巴布的第一个页面</h1>
     <h3>格式化文档 Shift+Alt+F</h3>
+    <h3>选中单词 Ctrl+D</h3>
+    <h3>复制一行到下一行 Shift+Alt+↓</h3>
   </body>
 </html>
