@@ -11,8 +11,10 @@ month = time.getMonth();
 date = time.getDate();
 const week = ["日", "一", "二", "三", "四", "五", "六", "七"];
 day = week[time.getDay()];
-document.getElementById("date").innerHTML =
-  year + "年" + (month + 1) + "月" + date + "日，周" + day;
+document.getElementById("date").innerHTML = `${year}年${
+  month + 1
+}月${date}日，周${day}`;
+// year + "年" + (month + 1) + "月" + date + "日，周" + day;
 
 // 为列表中的每一项创建删除键
 var myNodelist = document.getElementsByTagName("li");
