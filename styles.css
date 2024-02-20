@@ -1,0 +1,160 @@
+/* 标签样式 */
+body {
+  background-color: rgb(243, 243, 243);
+}
+ul {
+  margin: 1px;
+  padding: 0;
+}
+p {
+  font-size: smaller;
+}
+
+/* .class样式 */
+.picture {
+  border-radius: 6px;
+  width: 100%;
+}
+.tag1 {
+  float: right;
+  background-color: rgba(255, 201, 201, 0.3);
+  color: red;
+  padding: 3px;
+  font-size: smaller;
+}
+.tag2 {
+  float: right;
+  background-color: rgba(168, 127, 3, 0.2);
+  color: rgb(168, 127, 3);
+  padding: 3px;
+  font-size: smaller;
+}
+.price {
+  margin: 0;
+  color: rgb(255, 132, 0);
+  font-size: larger;
+  font-weight: bolder;
+}
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 3px;
+  width: 45%;
+  float: left;
+}
+
+.top-search {
+  border: 1px solid rgb(38, 144, 250);
+  border-radius: 10px;
+  display: flex;
+  justify-content: left;
+  margin: 10px 0px;
+}
+.top-search input {
+  border: 0;
+  color: gray;
+  width: 70vh;
+}
+.choice-list-box {
+  /* 为弹性容器内的项目指定默认对齐方式 */
+  /* align-items: center; */
+  display: flex;
+  /* 弹性内容布局对齐 */
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+}
+.choice-list-box ul.choice-list {
+  display: flex;
+  flex-direction: column;
+  width: 100vh;
+  /* color: rgb(169, 169, 169); */
+}
+.choice-list-box ul.choice-list li.choice-item {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin: 1px;
+}
+.choice-list-box ul.choice-list li.choice-item img {
+  margin: auto;
+  width: 6vh;
+  /* background-color: aqua; */
+}
+.choice-list-box ul.choice-list li.hotel {
+  background-color: #fb865020;
+}
+.choice-list-box ul.choice-list li.hotel:first-child {
+  background-image: linear-gradient(180deg, #fa5956 0%, #fb8650 100%);
+  color: white;
+}
+.choice-list-box ul.choice-list li.plane {
+  background-color: #50b2fa20;
+}
+.choice-list-box ul.choice-list li.plane:first-child {
+  background-image: linear-gradient(180deg, #3c83fa 0%, #50b2fa 100%);
+  color: white;
+}
+.choice-list-box ul.choice-list li.train {
+  background-color: #5e80ff20;
+}
+.choice-list-box ul.choice-list li.train:first-child {
+  background-image: linear-gradient(0deg, #66a4ff 0%, #5e80ff 100%);
+  color: white;
+}
+.choice-list-box ul.choice-list li.trip {
+  background-color: #52d9b320;
+}
+.choice-list-box ul.choice-list li.trip:first-child {
+  background-image: linear-gradient(180deg, #2fc3b6 0%, #52d9b3 100%);
+  color: white;
+}
+.choice-list-box ul.choice-list li.plan {
+  background-color: #ff893920;
+}
+.choice-list-box ul.choice-list li.plan:first-child {
+  background-image: linear-gradient(0deg, #ffa846 0%, #ff8939 100%);
+  color: white;
+}
+/* 第一个列表的第一项左上角设为圆角 以此类推 */
+.choice-list-box ul.choice-list:first-child li.choice-item:first-child {
+  border-top-left-radius: 10px;
+}
+.choice-list-box ul.choice-list:first-child li.choice-item:last-child {
+  border-bottom-left-radius: 10px;
+}
+.choice-list-box ul.choice-list:last-child li.choice-item:first-child {
+  border-top-right-radius: 10px;
+}
+.choice-list-box ul.choice-list:last-child li.choice-item:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+/* #id样式 */
+#user {
+  background-color: rgb(8, 251, 8);
+  color: rgb(10, 10, 10);
+}
+
+#App {
+  background-color: #282c34;
+  /* min-height设置元素的最小高度等于视口（viewport）高度的100% */
+  min-height: 100vh;
+  /* 弹性布局 */
+  display: flex;
+  /* 容器内项目column-从上至下排列 */
+  flex-direction: column;
+  /* 为弹性容器内的项目指定默认对齐方式 */
+  align-items: center;
+  /* 弹性内容布局对齐 */
+  justify-content: center;
+  /* 字体大小为基础字体大小10px 和相对于视口宽度和高度中较小的那个（vmin）的2倍 */
+  font-size: calc(10px + 2vmin);
+  /* 字体颜色为白色 */
+  color: white;
+}
+
+h4 {
+  background-color: #66fb61;
+}
