@@ -46,7 +46,7 @@ p {
 
 .top-search {
   border: 1px solid rgb(38, 144, 250);
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   justify-content: left;
   margin: 10px 0px;
@@ -64,6 +64,7 @@ p {
   justify-content: center;
   flex-direction: row;
   text-align: center;
+  font-size: smaller;
 }
 .choice-list-box ul.choice-list {
   display: flex;
