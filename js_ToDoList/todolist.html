@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODOLIST</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- <input type="button" value="不要点我" onclick="alert('你吵到我睡觉了！')" /> -->
+
+    <div style="border: 1px solid black">
+      <div class="header">
+        <h2>我的一天</h2>
+        <div id="date" style="margin: 20px">今天的日期</div>
+        <input type="text" id="myInput" placeholder="添加任务" />
+        <span onclick="newElement()" class="addBtn">Add</span>
+      </div>
+
+      <ul id="myUL">
+        <li class="checked">起床</li>
+        <li>吃饭</li>
+        <li>学习</li>
+        <li>睡觉</li>
+      </ul>
+    </div>
+
+    <script src="utils.js"></script>
+  </body>
+</html>
