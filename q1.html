@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      /* 填写样式 */
+      a {
+        color: #00bc9b;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 填写标签 -->
+    <!-- 页面中存在id=jsContainer的DOM元素。
+    该DOM元素内会给出一段随机文本，可能包含一些链接，比如https://www.baidu.com，或者 www.baidu.com?from=onlineExam，如果出现链接文本，请给该链接文本加上链接标签，用户点击后能直接在新窗口中打开该链接。
+    请完成 link 函数，完成该功能
+    1、container只有纯文本内容，不包含其他dom元素
+    2、识别所有以http://、https://或者www.开始的链接
+    3、所有www.开头的链接，默认使用 http 协议
+    4、所有链接在新窗口打开 -->
+    <div id="jsContainer">
+      这里会给出一段随机文本，可能包含一些链接，比如https://www.baidu.com，或者
+      www.baidu.com?from=onlineExam，如果出现链接文本，请给该链接文本加上链接标签，用户点击后能直接在新窗口中打开该链接。
+    </div>
+    <script type="text/javascript">
+      // 填写JavaScript
+      function link() {
+        const text = document.getElementById("jsContainer").innerHTML;
+        // text.innerHTML =
+        //   '这里会给出一段随机文本，可能包含一些链接，比如<a href="https://www.baidu.com">https://www.baidu.com</a>，或者\
+        // <a href="http://www.baidu.com?from=onlineExam">www.baidu.com?from=onlineExam</a>，如果出现链接文本，请给该链接文本加上链接标签，用户点击后能直接在新窗口中打开该链接。';
+
+        // console.log(text);
+        console.log(text.length);
+        // console.log("http://".length); // 7
+        // console.log("https://".length); // 8
+        // console.log("www.".length); //4
+        var startIndex = text.indexOf("https://");
+        var endIndex = text.indexOf("，", 19);
+        console.log(startIndex, endIndex);
+        text.slice(1, text.length - 1);
+        text.slice(0, 1);
+        text.slice(0, 1);
+        console.log(text.slice(10, text.length - 1));
+        if (startIndex > 0) console.log(text[startIndex]);
+        console.log(text[endIndex]);
+        // console.log(text.indexOf("http://"));
+        // console.log(text.indexOf("https://"));
+        // console.log(text.indexOf("www."));
+        for (let i = 0; i < text.length; i++) {
+          var startIndex = text.indexOf("https://");
+          var endIndex = text.indexOf("，", 19);
+          // console.log(text[i]);
+          if (i + 6 < text.length) {
+            let temp = text.indexOf("http://");
+          }
+        }
+      }
+      link();
+    </script>
+  </body>
+</html>
