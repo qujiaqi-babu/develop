@@ -1,7 +1,21 @@
 <!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<navigation-bar title="贺卡" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    Weixin
+  <!-- 卡片背景 -->
+  <view class="card-box" style="background-image: url('../../statics/background.jpeg')">
+
+    <!-- 音乐播放 -->
+    <image class="music" src='../../statics/play.png' bindtap='play'/>
+
+    <!-- 卡片文案 -->
+    <view class="card-content">
+      <input class="context" type="text" value="Dear {{toName}}"/>
+      <textarea class="context" bindblur="bindTextAreaBlur" placeholder="请输入贺词" value=""></textarea>
+      <input class="context" type="text" value="By {{fromName}}" style="text-align:right"/>
+    </view>
+    
+    <!-- 转发卡片 -->
+    <button class="btn" open-type="share" wx:if="{{hasSent==false}}">发送给好友</button>
+
   </view>
 </scroll-view>
