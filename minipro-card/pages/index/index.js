@@ -9,14 +9,20 @@ Page({
     context: "祝你十连三金，欧气满满！",
     fromName: "From Babu",
     state: "running",
-    // users: wx.getUserProfile({
-    //   desc: 'desc',
-    // })().theme,
+
+    userInfo: {},
+    hasUserInfo: false,
+    canIUseGetUserProfile: false,
   },
+
   // 监听页面加载
   onLoad: function (options) {
-    console.log(this.data.users);
-    // 发送给好友时数据更新
+    if (wx.getUserProfile) {
+      this.setData({
+        canIUseGetUserProfile: true,
+      });
+    }
+    // 转发页面时数据更新
     if (Object.keys(options).length !== 0) {
       this.setData({
         hasSent: options.hasSent,
@@ -26,16 +32,39 @@ Page({
       });
     }
   },
-  // 输入框内容实时更新到data
+
+  // 获取用户个人信息
+  getUserProfile(e) {
+    wx.getUserProfile({
+      desc: "用于完善会员资料",
+      success: (res) => {
+        // console.log("getUserProfileSuccess");
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true,
+        });
+        // console.log(this.data.userInfo);
+      },
+    });
+  },
+
+  // 实时更新用户输入
   bindToNameInput: function (e) {
-    this.setData({ toName: e.detail.value });
+    this.setData({
+      toName: e.detail.value,
+    });
   },
   bindContextInput: function (e) {
-    this.setData({ context: e.detail.value });
+    this.setData({
+      context: e.detail.value,
+    });
   },
   bindFromNameInput: function (e) {
-    this.setData({ fromName: e.detail.value });
+    this.setData({
+      fromName: e.detail.value,
+    });
   },
+
   // 发送给好友
   onShareAppMessage() {
     this.setData({ hasSent: true });
@@ -52,12 +81,14 @@ Page({
         this.data.fromName,
     };
   },
+
   // 音乐播放
   play: function () {
     myAudio.play();
     this.setData({ state: "running" });
     console.log(myAudio.duration);
   },
+
   // 音乐暂停
   pause: function () {
     myAudio.pause();
