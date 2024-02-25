@@ -2,16 +2,17 @@
 <navigation-bar title="贺卡" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
   <!-- 卡片背景 -->
-  <view class="card-box" style="background-image: url('../../statics/background.jpeg')">
+  <view class="card-box" style="background-image: url('http://mms0.baidu.com/it/u=71621068,1135888030&fm=253&app=138&f=JPEG?w=169&h=300')">
 
     <!-- 音乐播放 -->
-    <image class="music" src='../../statics/play.png' bindtap='play'/>
+    <image wx:if="{{state=='paused'}}" class="music" src='https://tse3-mm.cn.bing.net/th/id/OIP-C.LA_MIYPhBeZ9f-AIeGA8hAHaHa?rs=1&pid=ImgDetMain' bindtap='play'/>
+    <image wx:if="{{state=='running'}}" class="music" src='https://cdn.pixabay.com/photo/2018/05/01/07/20/music-pause-icon-3364870__340.png' bindtap='pause'/>
 
     <!-- 卡片文案 -->
     <view class="card-content">
-      <input class="context" type="text" value="Dear {{toName}}"/>
-      <textarea class="context" bindblur="bindTextAreaBlur" placeholder="请输入贺词" value=""></textarea>
-      <input class="context" type="text" value="By {{fromName}}" style="text-align:right"/>
+      <input class="context" type="text" value="{{toName}}" bindinput="bindToNameInput" />
+      <textarea class="context" placeholder="请输入贺词" value="{{context}}" bindinput="bindContextInput"></textarea>
+      <input class="context" type="text" value="{{fromName}}" style="text-align:right" bindinput="bindFromNameInput" />
     </view>
     
     <!-- 转发卡片 -->
