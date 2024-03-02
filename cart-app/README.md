@@ -24,8 +24,18 @@ npm install @react-navigation/native @react-navigation/native-stack
 
 ### 项目结构
 
-
+- asserts-存放静态资源文件（如商品图片）
+- component-自定义组件
+  - Product-购物车应用
+    - index.js-购物车组件入口
+    - productionInfo.js-本地json格式商品数据
+    - ProductList.js-商品/购物车列表展示
+    - ProductItem.js-商品展示项
+    - CartItem.js-购物车商品项
+  - home.js-主界面
+- example-界面流程示例图
+- App.js-导航栏页面声明
 
 ### 界面流程图
 
-![购物车-界面流程图](D:\develop\cart-app\example\购物车-界面流程图.jpg)
+![购物车-界面流程图](example\购物车-界面流程图.jpg)
