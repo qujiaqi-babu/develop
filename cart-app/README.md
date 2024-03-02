@@ -38,4 +38,4 @@ npm install @react-navigation/native @react-navigation/native-stack
 
 ### 界面流程图
 
-![购物车-界面流程图](example\购物车-界面流程图.jpg)
+<img src="example\购物车-界面流程图.jpg" alt="购物车-界面流程图" />
