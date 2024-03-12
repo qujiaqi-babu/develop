@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List with Priority</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      #todoInput {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      #todoList {
+        list-style: none;
+        padding: 0;
+      }
+      .todoItem {
+        background-color: #f4f4f4;
+        padding: 10px;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .priority {
+        margin-left: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Todo List with Priority</h1>
+
+    <input type="text" id="todoInput" placeholder="Enter a new todo" />
+    <ul id="todoList"></ul>
+
+    <script>
+      const todoInput = document.getElementById("todoInput");
+      const todoList = document.getElementById("todoList");
+
+      todoInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter" && this.value.trim() !== "") {
+          addTodoItem(this.value.trim());
+          this.value = "";
+        }
+      });
+
+      function addTodoItem(todoText) {
+        const prioritySelect = document.createElement("select");
+        prioritySelect.classList.add("priority");
+        const priorityOptions = ["Low", "Medium", "High"];
+        priorityOptions.forEach((priority) => {
+          const option = document.createElement("option");
+          option.textContent = priority;
+          prioritySelect.appendChild(option);
+        });
+
+        const listItem = document.createElement("li");
+        listItem.classList.add("todoItem");
+        listItem.innerHTML = `
+            <span>${todoText}</span>
+            <button class="deleteButton">❌</button>
+        `;
+        listItem.appendChild(prioritySelect);
+
+        todoList.appendChild(listItem);
+
+        sortTodoList();
+      }
+
+      todoList.addEventListener("click", function (e) {
+        if (e.target && e.target.classList.contains("deleteButton")) {
+          e.target.parentElement.remove();
+        }
+      });
+
+      function sortTodoList() {
+        const items = Array.from(todoList.children);
+        items.sort((a, b) => {
+          const priorityA = a.querySelector(".priority").selectedIndex;
+          const priorityB = b.querySelector(".priority").selectedIndex;
+          return priorityA - priorityB;
+        });
+
+        // Clear the list and re-append sorted items
+        todoList.innerHTML = "";
+        items.forEach((item) => {
+          todoList.appendChild(item);
+        });
+      }
+    </script>
+  </body>
+</html>
