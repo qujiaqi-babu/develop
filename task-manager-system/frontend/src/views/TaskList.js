@@ -38,7 +38,6 @@ function TaskList() {
 
   // 处理单选框变化
   const handleRadioChange = (event) => {
-    // setCurrtask(...currtask, { status: event.target.value });
     setStatus(event.target.value);
   };
 

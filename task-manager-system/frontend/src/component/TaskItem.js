@@ -13,7 +13,6 @@ export default function TaskItem({ task, onShow, onEdit }) {
     >
       <div style={{ flex: 6, marginRight: "10px" }}>
         <strong>{task.title}</strong>
-        {/* <p>{task.description}</p> */}
       </div>
       <button
         onClick={() => onShow(task)}

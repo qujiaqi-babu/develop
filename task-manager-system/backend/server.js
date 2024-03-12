@@ -32,12 +32,11 @@ app.use(
   })
 );
 
-// 注册路由
-
 // 邮箱格式验证
 const checkEmail = (email) => {
   return /^[^\s@]+@[^\s@]+(\.[^\s@]+)+$/.test(email);
 };
+
 // 密码格式验证 至少包含1个数字、1个大写字母、1个小写字母 密码包含6-18位数字/字母
 const checkPassword = (password) => {
   return /^(?![0-9]+$)(?![A-Z]+$)(?![a-z]+$)[0-9A-Za-z]{6,18}$/.test(password);
