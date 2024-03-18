@@ -53,7 +53,7 @@ mkdir task-manager
 cd task-manager
 npx create-react-app frontend
 cd frontend
-npm install axios react-router-dom
+npm install axios react-router-dom 
 cd ..
 mkdir backend
 cd backend
