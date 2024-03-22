@@ -1,0 +1,28 @@
+{
+  "name": "vue-vite-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "optimize": "vite optimize",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/cli-plugin-typescript": "^5.0.8",
+    "@vue/compiler-sfc": "^3.4.21",
+    "element-plus": "^2.6.1",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-progress": "^0.0.7",
+    "vue": "^3.4.21",
+    "vue-loader": "^17.4.2",
+    "vue-router": "^4.0.1",
+    "vue-tsc": "^2.0.6",
+    "vuex": "^4.0.2"
+  }
+}

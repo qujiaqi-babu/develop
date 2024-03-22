@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // 将 noImplicitAny 设置为 false 可以关闭是否有隐式的 any 类型检查，即允许存在隐式的 any 类型
+    "noImplicitAny": false,
+
+    // 将 allowJs 设置为 true 可以允许 TypeScript 处理 JavaScript 文件
+    "allowJs": true,
+
+    // 允许 TypeScript 编译器在生成 CommonJS 模块时使用 ES 模块导入语法，以方便地与现有的 ES 模块和 CommonJS 模块进行交互
+    "esModuleInterop": true,
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

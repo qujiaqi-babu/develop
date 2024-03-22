@@ -81,7 +81,7 @@ node server.js
 - 当前登录用户角色为管理员（admin）：具备对其他用户列表增删改查操作，可以添加新用户、删除用户、修改用户角色（自己的除外）、查看用户列表。
 - 当前登录用户角色为普通用户（user）：仅可以修改自己的个人信息（不可修改角色）、查看用户列表。
 
-![image-20240318225351388](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318225351388.png)
+<img src="example\image-20240318225351388.png"/>
 
 
 
@@ -99,64 +99,64 @@ node server.js
 
 - 为了方便进行功能测试，点击“Test data”，系统将自动填充表单信息。点击Register按钮，后台会对用户名（是否注册过）、邮箱（是否格式正确）、密码（安全性检测并加密存储）进行校验，校验失败则展示报错信息。
 
-![image-20240318221223959](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318221223959.png)
+<img src="example\image-20240318221223959.png"/>
 
 后台数据库：
 
-![image-20240318222401562](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318222401562.png)
+<img src="example\image-20240318222401562.png"/>
 
 - 点击Login按钮，后台会对用户名、密码进行后台数据库校验，校验失败则展示报错信息。登录成功则将用户Id保存到cookie中，并自动跳转到用户列表展示页。登录状态下，页面右上角会显示当前登录用户的角色和用户名，在有效期内刷新浏览器会保持登录状态。
 
-![image-20240318221414267](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318221414267.png)
+<img src="example\image-20240318221414267.png"/>
 
-![image-20240318221450806](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318221450806.png)
+<img src="example\image-20240318221450806.png"/>
 
 - 点击Add按钮，填写新用户表单，校验规则与注册相同。
 
-![image-20240318223007509](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318223007509.png)
+<img src="example\image-20240318223007509.png"/>
 
-![image-20240318223244070](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318223244070.png)
+<img src="example\image-20240318223244070.png"/>
 
 后台数据库：
 
-![image-20240318224113884](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318224113884.png)
+<img src="example\image-20240318224113884.png"/>
 
 - 点击用户“test1”对应Edit操作，修改其角色为管理员。
 
-![image-20240318223415568](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318223415568.png)
+<img src="example\image-20240318223415568.png"/>
 
-![image-20240318223626553](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318223626553.png)
+<img src="example\image-20240318223626553.png"/>
 
-![image-20240318223550236](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318223550236.png)
+<img src="example\image-20240318223550236.png"/>
 
 后台数据库：
 
-![image-20240318224201146](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318224201146.png)
+<img src="example\image-20240318224201146.png"/>
 
 - 点击用户“test1”对应Delete操作，删除用户“test1”
 
-![image-20240318223847466](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318223847466.png)
+<img src="example\image-20240318223847466.png"/>
 
 后台数据库：
 
-![image-20240318224240403](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318224240403.png)
+<img src="example\image-20240318224240403.png"/>
 
-- 点击菜单栏退出登录按钮，确定后回到登录界面。
+- 点击菜单栏退出登录按钮，确定后回到登录界面，cookie置空。
 
-![image-20240318224400067](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318224400067.png)
+<img src="example\image-20240318224400067.png"/>
 
-![image-20240318224457291](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318224457291.png)
+<img src="example\image-20240318224457291.png"/>
 
 2.注册普通用户“Babu188”=>登录=>查看用户列表=>修改个人信息=>刷新界面（登录状态保持）
 
-![image-20240318224559030](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318224559030.png)
+<img src="example\image-20240318224559030.png"/>
 
-![image-20240318224653637](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318224653637.png)
+<img src="example\image-20240318224653637.png"/>
 
-![image-20240318224835848](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318224835848.png)
+<img src="example\image-20240318224835848.png"/>
 
-![image-20240318224855929](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318224855929.png)
+<img src="example\image-20240318224855929.png"/>
 
 后台数据库：
 
-![image-20240318225441488](C:\Users\10585\AppData\Roaming\Typora\typora-user-images\image-20240318225441488.png)
+<img src="example\image-20240318225441488.png"/>
