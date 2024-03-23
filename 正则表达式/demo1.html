@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo1</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column; /* 设置主轴方向为竖直方向 */
+        align-items: center; /* 水平居中 */
+        justify-content: center; /* 垂直居中 */
+        height: 100vh; /* 设置容器高度为视口高度 */
+      }
+      .tag {
+        color: blue; /* 标题颜色 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 文字阴影 */
+        padding: 10px 20px; /* 内边距 */
+      }
+      .button {
+        background-color: black; /* 按钮背景颜色 */
+        color: white; /* 按钮文字颜色 */
+        padding: 10px 20px; /* 按钮内边距 */
+        border-radius: 5px; /* 边框圆角 */
+        font-size: 20px; /* 字体大小 */
+      }
+      .button:hover {
+        background-color: gray; /* 按钮悬停时背景颜色 */
+        cursor: pointer; /* 悬停时鼠标变成手形 */
+      }
+    </style>
+  </head>
+  <body id="richText">
+    <h1 style="border: 1px solid">This is h1 with style="border: 1px solid"</h1>
+    <h2>This is h2</h2>
+    <h3>This is h3</h3>
+    <h1>This is h1</h1>
+    <p>
+      匹配富文本中的&lt;h1&gt;标签，并给该标签添加一个样式&lt;h1 class="tag"&gt;
+    </p>
+    <div onclick="addTag()" class="button">
+      &lt;h1 ...&gt; => &lt;h1 class="tag" ...&gt;
+    </div>
+    <pre>
+    .tag {
+        color: blue; /* 标题颜色 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 文字阴影 */
+        padding: 10px 20px; /* 内边距 */
+    }
+    </pre>
+    <script>
+      function addTag() {
+        var richText = document.getElementById("richText");
+        var htmlContent = richText.innerHTML;
+        // 给<h1 ...>标签添加样式<h1 class="tag" ...>
+        var modifiedContent = htmlContent.replace(
+          /<h1([^>]*)>/gi,
+          '<h1 class="tag"$1>'
+        );
+        richText.innerHTML = modifiedContent;
+      }
+    </script>
+  </body>
+</html>

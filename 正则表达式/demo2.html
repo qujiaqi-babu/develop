@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo2</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column; /* 设置主轴方向为竖直方向 */
+        align-items: center; /* 水平居中 */
+        justify-content: center; /* 垂直居中 */
+        height: 100vh; /* 设置容器高度为视口高度 */
+        font-size: 20px; /* 字体大小 */
+      }
+      .button {
+        background-color: black; /* 按钮背景颜色 */
+        color: white; /* 按钮文字颜色 */
+        padding: 10px 20px; /* 按钮内边距 */
+        border-radius: 5px; /* 边框圆角 */
+      }
+      .button:hover {
+        background-color: gray; /* 按钮悬停时背景颜色 */
+        cursor: pointer; /* 悬停时鼠标变成手形 */
+      }
+    </style>
+  </head>
+  <body>
+    <p id="sql">
+      let str = "select * from XXX where field_name1=$param.paramName and
+      field_name2=$global._ID";
+    </p>
+    <div onclick="sqlReplace()" class="button">
+      将如上 sql 语句中的 $param.paramName 和 $global._ID 参数替换为 vicent 和
+      11
+    </div>
+    <script>
+      function sqlReplace() {
+        var dom = document.getElementById("sql");
+        var sql = dom.innerHTML;
+        // 替换 $param.paramName 为 vicent
+        sql = sql.replace(/\$param\.paramName/g, "vicent");
+        // 替换 $global._ID 为 11
+        sql = sql.replace(/\$global\._ID/g, "11");
+        dom.innerHTML = sql;
+      }
+    </script>
+  </body>
+</html>
